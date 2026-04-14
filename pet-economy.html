@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宠物经济调研 | 子颛</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0071e3',
+                        secondary: '#f5f5f7',
+                        dark: '#1d1d1f',
+                        light: '#f5f5f7',
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow-sm {
+                text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark font-sans">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 bg-blur z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-semibold text-primary">子颛</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="text-gray-700 hover:text-primary transition-all-300">关于我</a>
+                <a href="index.html#projects" class="text-gray-700 hover:text-primary transition-all-300">作品</a>
+                <a href="index.html#contact" class="text-gray-700 hover:text-primary transition-all-300">联系我</a>
+            </div>
+            <button class="md:hidden text-gray-700" id="menu-toggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white border-t border-gray-200" id="mobile-menu">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html#about" class="text-gray-700 hover:text-primary transition-all-300 py-2">关于我</a>
+                <a href="index.html#projects" class="text-gray-700 hover:text-primary transition-all-300 py-2">作品</a>
+                <a href="index.html#contact" class="text-gray-700 hover:text-primary transition-all-300 py-2">联系我</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 项目详情 -->
+    <header class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-white to-secondary">
+        <div class="container mx-auto px-4">
+            <a href="index.html#projects" class="inline-flex items-center text-primary mb-6">
+                <i class="fa fa-arrow-left mr-2"></i>
+                <span>返回作品列表</span>
+            </a>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">宠物经济调研</h1>
+            <p class="text-xl text-gray-600">宠物&年轻人群</p>
+        </div>
+    </header>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <img src="https://picsum.photos/1920/1080?random=2" alt="宠物经济调研" class="w-full h-96 object-cover rounded-xl mb-8">
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-bold">项目概述</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        本项目聚焦于宠物经济与年轻人群的关系，通过市场调研和用户访谈，分析年轻一代对宠物消费的态度和行为特征。
+                    </p>
+                    <h2 class="text-2xl font-bold">研究内容</h2>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>年轻人群宠物饲养现状</li>
+                        <li>宠物消费行为分析</li>
+                        <li>宠物社交与情感需求</li>
+                        <li>宠物市场发展趋势</li>
+                    </ul>
+                    <h2 class="text-2xl font-bold">研究成果</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        研究发现，年轻人群已成为宠物经济的主要消费群体，他们对宠物的情感投入和消费意愿较高。本研究为宠物行业的产品开发和营销策略提供了有价值的参考。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-dark text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400 text-sm">
+                © 2026 子颛 | 个人主页
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // 只对非空#链接执行平滑滚动
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // 关闭移动端菜单
+                        document.getElementById('mobile-menu').classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
